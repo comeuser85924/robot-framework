@@ -1,78 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.0.3 (Python 3.7.1 on win32)" generated="20210828 00:59:55.280" rpa="false" schemaversion="2">
+<robot generator="Robot 4.0.3 (Python 3.7.1 on win32)" generated="20210828 03:26:46.006" rpa="false" schemaversion="2">
 <suite id="s1" name="Test" source="C:\Users\User\Desktop\side-project\robot framework\firstTest\test.robot">
-<test id="s1-t1" name="Open Google">
-<kw name="Open Browser" library="Selenium2Library">
+<kw name="Open Browser" library="Selenium2Library" type="SETUP">
 <arg>https://google.com</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20210828 00:59:55.444" level="INFO">Opening browser 'chrome' to base url 'https://google.com'.</msg>
-<status status="PASS" starttime="20210828 00:59:55.443" endtime="20210828 01:00:00.483"/>
+<msg timestamp="20210828 03:26:46.172" level="INFO">Opening browser 'chrome' to base url 'https://google.com'.</msg>
+<status status="PASS" starttime="20210828 03:26:46.172" endtime="20210828 03:26:51.319"/>
 </kw>
-<status status="PASS" starttime="20210828 00:59:55.442" endtime="20210828 01:00:00.483"/>
-</test>
-<test id="s1-t2" name="Search Name">
+<test id="s1-t1" name="Search Name And Verify Data">
+<for flavor="IN">
+<var>${name}</var>
+<value>@{userName}</value>
+<iter>
+<var name="${name}">Gary</var>
+<kw name="SearchSubmit">
+<arg>${name}</arg>
 <kw name="Input Text" library="Selenium2Library">
 <arg>xpath=//div[@class="a4bIc"]/input</arg>
-<arg>${userName}</arg>
+<arg>${name}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20210828 01:00:00.485" level="INFO">Typing text 'Gary 胖子 Ron' into text field 'xpath=//div[@class="a4bIc"]/input'.</msg>
-<status status="PASS" starttime="20210828 01:00:00.485" endtime="20210828 01:00:00.583"/>
+<msg timestamp="20210828 03:26:51.321" level="INFO">Typing text 'Gary' into text field 'xpath=//div[@class="a4bIc"]/input'.</msg>
+<status status="PASS" starttime="20210828 03:26:51.321" endtime="20210828 03:26:51.378"/>
 </kw>
 <kw name="Submit Form" library="Selenium2Library">
 <doc>Submits a form identified by ``locator``.</doc>
-<msg timestamp="20210828 01:00:00.584" level="INFO">Submitting form 'None'.</msg>
-<status status="PASS" starttime="20210828 01:00:00.584" endtime="20210828 01:00:02.402"/>
+<msg timestamp="20210828 03:26:51.378" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20210828 03:26:51.378" endtime="20210828 03:26:53.579"/>
 </kw>
-<status status="PASS" starttime="20210828 01:00:00.484" endtime="20210828 01:00:02.402"/>
-</test>
-<test id="s1-t3" name="Get The First Data">
-<kw name="Get Text" library="Selenium2Library">
-<var>${getTitle}</var>
+<status status="PASS" starttime="20210828 03:26:51.320" endtime="20210828 03:26:53.579"/>
+</kw>
+<kw name="SearchVerify">
+<arg>${name}</arg>
+<kw name="Element Should Contain" library="Selenium2Library">
 <arg>xpath=//div[@class="yuRUbf"]/a/h3</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20210828 01:00:02.424" level="INFO">${getTitle} = GARY BASEMAN 三吋公仔五隻一套不拆賣 - 蝦皮購物</msg>
-<status status="PASS" starttime="20210828 01:00:02.404" endtime="20210828 01:00:02.425"/>
+<arg>${name}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210828 03:26:53.600" level="INFO">Element 'xpath=//div[@class="yuRUbf"]/a/h3' contains text 'Gary'.</msg>
+<status status="PASS" starttime="20210828 03:26:53.580" endtime="20210828 03:26:53.600"/>
 </kw>
 <kw name="Get Element Attribute" library="Selenium2Library">
 <var>${getUrl}</var>
 <arg>xpath=//div[@class="yuRUbf"]/a</arg>
 <arg>href</arg>
 <doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20210828 01:00:02.439" level="INFO">${getUrl} = https://mall.shopee.tw/GARY-BASEMAN-%E4%B8%89%E5%90%8B%E5%85%AC%E4%BB%94%E4%BA%94%E9%9A%BB%E4%B8%80%E5%A5%97%E4%B8%8D%E6%8B%86%E8%B3%A3-i.13738058.6615765115</msg>
-<status status="PASS" starttime="20210828 01:00:02.425" endtime="20210828 01:00:02.439"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${getTitle}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20210828 01:00:02.440" level="INFO">GARY BASEMAN 三吋公仔五隻一套不拆賣 - 蝦皮購物</msg>
-<status status="PASS" starttime="20210828 01:00:02.439" endtime="20210828 01:00:02.440"/>
+<msg timestamp="20210828 03:26:53.611" level="INFO">${getUrl} = https://zh.wikipedia.org/wiki/Gary_(%E9%9F%93%E5%9C%8B%E6%AD%8C%E6%89%8B)</msg>
+<status status="PASS" starttime="20210828 03:26:53.600" endtime="20210828 03:26:53.611"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>${getUrl}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20210828 01:00:02.440" level="INFO">https://mall.shopee.tw/GARY-BASEMAN-%E4%B8%89%E5%90%8B%E5%85%AC%E4%BB%94%E4%BA%94%E9%9A%BB%E4%B8%80%E5%A5%97%E4%B8%8D%E6%8B%86%E8%B3%A3-i.13738058.6615765115</msg>
-<status status="PASS" starttime="20210828 01:00:02.440" endtime="20210828 01:00:02.440"/>
+<msg timestamp="20210828 03:26:53.611" level="INFO">https://zh.wikipedia.org/wiki/Gary_(%E9%9F%93%E5%9C%8B%E6%AD%8C%E6%89%8B)</msg>
+<status status="PASS" starttime="20210828 03:26:53.611" endtime="20210828 03:26:53.611"/>
 </kw>
-<status status="PASS" starttime="20210828 01:00:02.404" endtime="20210828 01:00:02.441"/>
+<status status="PASS" starttime="20210828 03:26:53.579" endtime="20210828 03:26:53.612"/>
+</kw>
+<status status="PASS" starttime="20210828 03:26:51.320" endtime="20210828 03:26:53.612"/>
+</iter>
+<iter>
+<var name="${name}">胖子</var>
+<kw name="SearchSubmit">
+<arg>${name}</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>xpath=//div[@class="a4bIc"]/input</arg>
+<arg>${name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210828 03:26:53.612" level="INFO">Typing text '胖子' into text field 'xpath=//div[@class="a4bIc"]/input'.</msg>
+<status status="PASS" starttime="20210828 03:26:53.612" endtime="20210828 03:26:53.662"/>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by ``locator``.</doc>
+<msg timestamp="20210828 03:26:53.663" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20210828 03:26:53.663" endtime="20210828 03:26:54.819"/>
+</kw>
+<status status="PASS" starttime="20210828 03:26:53.612" endtime="20210828 03:26:54.819"/>
+</kw>
+<kw name="SearchVerify">
+<arg>${name}</arg>
+<kw name="Element Should Contain" library="Selenium2Library">
+<arg>xpath=//div[@class="yuRUbf"]/a/h3</arg>
+<arg>${name}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210828 03:26:54.836" level="INFO">Element 'xpath=//div[@class="yuRUbf"]/a/h3' contains text '胖子'.</msg>
+<status status="PASS" starttime="20210828 03:26:54.819" endtime="20210828 03:26:54.836"/>
+</kw>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${getUrl}</var>
+<arg>xpath=//div[@class="yuRUbf"]/a</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20210828 03:26:54.846" level="INFO">${getUrl} = https://zh.wikipedia.org/zh-tw/%E8%83%96%E5%AD%90%E5%8E%9F%E5%AD%90%E5%BD%88</msg>
+<status status="PASS" starttime="20210828 03:26:54.836" endtime="20210828 03:26:54.846"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getUrl}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210828 03:26:54.847" level="INFO">https://zh.wikipedia.org/zh-tw/%E8%83%96%E5%AD%90%E5%8E%9F%E5%AD%90%E5%BD%88</msg>
+<status status="PASS" starttime="20210828 03:26:54.846" endtime="20210828 03:26:54.847"/>
+</kw>
+<status status="PASS" starttime="20210828 03:26:54.819" endtime="20210828 03:26:54.847"/>
+</kw>
+<status status="PASS" starttime="20210828 03:26:53.612" endtime="20210828 03:26:54.847"/>
+</iter>
+<iter>
+<var name="${name}">Ron</var>
+<kw name="SearchSubmit">
+<arg>${name}</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>xpath=//div[@class="a4bIc"]/input</arg>
+<arg>${name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210828 03:26:54.847" level="INFO">Typing text 'Ron' into text field 'xpath=//div[@class="a4bIc"]/input'.</msg>
+<status status="PASS" starttime="20210828 03:26:54.847" endtime="20210828 03:26:54.898"/>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by ``locator``.</doc>
+<msg timestamp="20210828 03:26:54.898" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20210828 03:26:54.898" endtime="20210828 03:26:55.734"/>
+</kw>
+<status status="PASS" starttime="20210828 03:26:54.847" endtime="20210828 03:26:55.734"/>
+</kw>
+<kw name="SearchVerify">
+<arg>${name}</arg>
+<kw name="Element Should Contain" library="Selenium2Library">
+<arg>xpath=//div[@class="yuRUbf"]/a/h3</arg>
+<arg>${name}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210828 03:26:55.795" level="INFO">Element 'xpath=//div[@class="yuRUbf"]/a/h3' contains text 'Ron'.</msg>
+<status status="PASS" starttime="20210828 03:26:55.735" endtime="20210828 03:26:55.795"/>
+</kw>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${getUrl}</var>
+<arg>xpath=//div[@class="yuRUbf"]/a</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20210828 03:26:55.805" level="INFO">${getUrl} = https://www.roncafebar.com/</msg>
+<status status="PASS" starttime="20210828 03:26:55.795" endtime="20210828 03:26:55.805"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getUrl}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210828 03:26:55.806" level="INFO">https://www.roncafebar.com/</msg>
+<status status="PASS" starttime="20210828 03:26:55.805" endtime="20210828 03:26:55.806"/>
+</kw>
+<status status="PASS" starttime="20210828 03:26:55.735" endtime="20210828 03:26:55.806"/>
+</kw>
+<status status="PASS" starttime="20210828 03:26:54.847" endtime="20210828 03:26:55.806"/>
+</iter>
+<status status="PASS" starttime="20210828 03:26:51.320" endtime="20210828 03:26:55.806"/>
+</for>
+<status status="PASS" starttime="20210828 03:26:51.319" endtime="20210828 03:26:55.806"/>
 </test>
-<test id="s1-t4" name="Close Browser">
-<kw name="Close Browser" library="Selenium2Library">
+<kw name="Close Browser" library="Selenium2Library" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20210828 01:00:02.443" endtime="20210828 01:00:05.507"/>
+<status status="PASS" starttime="20210828 03:26:55.807" endtime="20210828 03:26:58.853"/>
 </kw>
-<status status="PASS" starttime="20210828 01:00:02.442" endtime="20210828 01:00:05.510"/>
-</test>
-<status status="PASS" starttime="20210828 00:59:55.282" endtime="20210828 01:00:05.517"/>
+<status status="PASS" starttime="20210828 03:26:46.008" endtime="20210828 03:26:58.878"/>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="4" fail="0" skip="0" id="s1" name="Test">Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test">Test</stat>
 </suite>
 </statistics>
 <errors>

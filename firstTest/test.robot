@@ -1,22 +1,27 @@
 *** Settings ***
 Library    Selenium2Library
 
+Suite Setup  Open Browser  https://google.com  chrome
+Suite Teardown  Close Browser
+
 *** Variables ***
-${userName}  Gary  胖子  Ron
+@{userName}  Gary  胖子  Ron
 
 *** Test Cases ***
-Open Google
-  Open Browser  https://google.com  chrome
+Search Name And Verify Data 
+  FOR  ${name}  IN  @{userName}
+    SearchSubmit  ${name}
+    SearchVerify  ${name}
+  END
 
-Search Name
-  Input Text  xpath=//div[@class="a4bIc"]/input  ${userName}
+*** Keywords ***
+SearchSubmit
+  [Arguments]    ${name}
+  Input Text  xpath=//div[@class="a4bIc"]/input  ${name}
   submit form
 
-Get The First Data
-  ${getTitle}  Get Text  xpath=//div[@class="yuRUbf"]/a/h3
+SearchVerify
+  [Arguments]    ${name}
+  Element Should Contain  xpath=//div[@class="yuRUbf"]/a/h3  ${name}
   ${getUrl}  Get Element Attribute  xpath=//div[@class="yuRUbf"]/a  href
-  Log  ${getTitle} 
   Log  ${getUrl}
-
-Close Browser
-  Close Browser
