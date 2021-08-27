@@ -10,13 +10,13 @@ Open Google
 
 Search Name
   Input Text  xpath=//div[@class="a4bIc"]/input  ${userName}
-	submit form
+  submit form
 
 Get The First Data
-	${getTitle}  Get Text  xpath=//div[@class="yuRUbf"]/a/h3
-	${getUrl}  Get Element Attribute  xpath=//div[@class="yuRUbf"]/a  href
-	Log  ${getTitle} 
-	Log  ${getUrl}
+  ${getTitle}  Get Text  xpath=//div[@class="yuRUbf"]/a/h3
+  ${getUrl}  Get Element Attribute  xpath=//div[@class="yuRUbf"]/a  href
+  Log  ${getTitle} 
+  Log  ${getUrl}
 
 Close Browser
   Close Browser
