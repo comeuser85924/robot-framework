@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.3 (Python 3.7.1 on win32)" generated="20210828 00:59:55.280" rpa="false" schemaversion="2">
+<suite id="s1" name="Test" source="C:\Users\User\Desktop\side-project\robot framework\firstTest\test.robot">
+<test id="s1-t1" name="Open Google">
+<kw name="Open Browser" library="Selenium2Library">
+<arg>https://google.com</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210828 00:59:55.444" level="INFO">Opening browser 'chrome' to base url 'https://google.com'.</msg>
+<status status="PASS" starttime="20210828 00:59:55.443" endtime="20210828 01:00:00.483"/>
+</kw>
+<status status="PASS" starttime="20210828 00:59:55.442" endtime="20210828 01:00:00.483"/>
+</test>
+<test id="s1-t2" name="Search Name">
+<kw name="Input Text" library="Selenium2Library">
+<arg>xpath=//div[@class="a4bIc"]/input</arg>
+<arg>${userName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210828 01:00:00.485" level="INFO">Typing text 'Gary 胖子 Ron' into text field 'xpath=//div[@class="a4bIc"]/input'.</msg>
+<status status="PASS" starttime="20210828 01:00:00.485" endtime="20210828 01:00:00.583"/>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by ``locator``.</doc>
+<msg timestamp="20210828 01:00:00.584" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20210828 01:00:00.584" endtime="20210828 01:00:02.402"/>
+</kw>
+<status status="PASS" starttime="20210828 01:00:00.484" endtime="20210828 01:00:02.402"/>
+</test>
+<test id="s1-t3" name="Get The First Data">
+<kw name="Get Text" library="Selenium2Library">
+<var>${getTitle}</var>
+<arg>xpath=//div[@class="yuRUbf"]/a/h3</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20210828 01:00:02.424" level="INFO">${getTitle} = GARY BASEMAN 三吋公仔五隻一套不拆賣 - 蝦皮購物</msg>
+<status status="PASS" starttime="20210828 01:00:02.404" endtime="20210828 01:00:02.425"/>
+</kw>
+<kw name="Get Element Attribute" library="Selenium2Library">
+<var>${getUrl}</var>
+<arg>xpath=//div[@class="yuRUbf"]/a</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20210828 01:00:02.439" level="INFO">${getUrl} = https://mall.shopee.tw/GARY-BASEMAN-%E4%B8%89%E5%90%8B%E5%85%AC%E4%BB%94%E4%BA%94%E9%9A%BB%E4%B8%80%E5%A5%97%E4%B8%8D%E6%8B%86%E8%B3%A3-i.13738058.6615765115</msg>
+<status status="PASS" starttime="20210828 01:00:02.425" endtime="20210828 01:00:02.439"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getTitle}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210828 01:00:02.440" level="INFO">GARY BASEMAN 三吋公仔五隻一套不拆賣 - 蝦皮購物</msg>
+<status status="PASS" starttime="20210828 01:00:02.439" endtime="20210828 01:00:02.440"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${getUrl}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210828 01:00:02.440" level="INFO">https://mall.shopee.tw/GARY-BASEMAN-%E4%B8%89%E5%90%8B%E5%85%AC%E4%BB%94%E4%BA%94%E9%9A%BB%E4%B8%80%E5%A5%97%E4%B8%8D%E6%8B%86%E8%B3%A3-i.13738058.6615765115</msg>
+<status status="PASS" starttime="20210828 01:00:02.440" endtime="20210828 01:00:02.440"/>
+</kw>
+<status status="PASS" starttime="20210828 01:00:02.404" endtime="20210828 01:00:02.441"/>
+</test>
+<test id="s1-t4" name="Close Browser">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210828 01:00:02.443" endtime="20210828 01:00:05.507"/>
+</kw>
+<status status="PASS" starttime="20210828 01:00:02.442" endtime="20210828 01:00:05.510"/>
+</test>
+<status status="PASS" starttime="20210828 00:59:55.282" endtime="20210828 01:00:05.517"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="Test">Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
